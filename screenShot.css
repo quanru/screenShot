@@ -1,0 +1,48 @@
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+#origin, #preview {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    border: 2px solid #2D2D2D;
+    background: #eee;
+    float: left;
+    margin: 10px;
+}
+
+#originImg {
+    position: relative;
+    width: 450px;
+    height: 450px;
+}
+
+#shotRect {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #2D2D2D;
+    display: none;
+    opacity: 0.5;
+}
+
+#shotRect .resizeBR {
+    position: absolute;
+    background: #000;
+    opacity: 0;
+    width: 8px;
+    height: 8px;
+    background: #FF0;
+    right: 0;
+    bottom: 0;
+    cursor: nw-resize;
+}
+
+#loadBtn {
+    margin-left: 420px;
+}
