@@ -6,7 +6,7 @@
     clear: both;
 }
 
-#origin, #preview {
+#origin, #showPre {
     position: relative;
     width: 450px;
     height: 450px;
@@ -45,4 +45,8 @@
 
 #loadBtn {
     margin-left: 420px;
+}
+
+#saveBtn {
+    margin-left: 5px;
 }

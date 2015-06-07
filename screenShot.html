@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>ScreenShot</title>
-	<link rel="stylesheet" href="screenShot.css">
-</head>
-<body>
-	<section class="clearfix">
-		<div id="origin">
-			<img id="originImg" alt="原始图片">
-			<div id="shotRect">
-				<div class="resizeBR"></div>
-			</div>
-		</div>
-		<div id="preview">
-			
-		</div>
-	</section>
-	<section class="clearfix">
-		<input id="loadBtn" type="button" value="载入">
-	</section>
-	<script type="text/javascript" src="screenShot.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>ScreenShot</title>
+        <link rel="stylesheet" href="screenShot.css">
+    </head>
+    <body>
+        <section class="clearfix">
+            <div id="origin">
+                <img id="originImg" alt="原始图片">
+                <div id="shotRect">
+                    <div class="resizeBR"></div>
+                </div>
+            </div>
+            <canvas id="showPre" width="450" height="450"></canvas>
+        </section>
+        <section class="clearfix">
+            <input id="loadBtn" type="button" value="载入">
+            <input id="saveBtn" type="button" value="保存">
+        </section>
+        <script type="text/javascript" src="screenShot.js"></script>
+    </body>
 </html>
