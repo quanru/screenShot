@@ -53,11 +53,18 @@ function dragDown(event) {
 }
 
 function loadImg(event) { //载入图片
-    document.getElementById("originImg").setAttribute('src', 'vegetable.jpg');
+    //document.getElementById("originImg").setAttribute('src', 'vegetable.jpg');
+    cOri = document.getElementById("originImg");
+    imgOri = new Image();
+    ctxOri = cOri.getContext("2d");
+    imgOri.src = "vegetable.jpg";
+    imgOri.onload=function(){
+        ctxOri.drawImage(imgOri,0,0,500,500);
+    };
 }
 
 function saveImg(event) {
-    var image = c.toDataURL("image/png");
+    var image = cPre.toDataURL("image/png");
     var w = window.open('about:blank', 'image from canvas');
     w.document.write("<img src='" + image + "' alt='from canvas'/>");
 }
@@ -93,18 +100,19 @@ function resizeDown(event) {
     function mouseMove(event) {
         event = event || window.event;
         var finalX = event.clientX,
-            finalY = event.clientY;
+                finalY = event.clientY;
         //防止超过边界
-        if (event.clientX >= 463) {
-            finalX = 463;
+        if (event.clientX >= 513) {
+            finalX = 513;
         }
-        if (event.clientY >= 463) {
-            finalY = 463;
+        if (event.clientY >= 513) {
+            finalY = 513;
         }
+        xy = finalX - x < finalY - y ? finalX -x : finalY - y;
         //计算移动后的Rect新大小
-        shotRect.style.width = finalX - x + 'px';
-        shotRect.style.height = finalY - y + 'px';
-        updateRect(x - 15, y - 15, shotRect.offsetWidth, shotRect.offsetHeight);
+        shotRect.style.width = xy + 'px';
+        shotRect.style.height = xy + 'px';
+        updateRect(x - 15, x - 15, shotRect.offsetWidth, shotRect.offsetHeight);
     }
     //停止事件 
     function mouseUp() {
@@ -114,19 +122,15 @@ function resizeDown(event) {
     }
 }
 
-function initCanvas() {//初始化画布
-    c = document.getElementById("showPre");
-    ctx = c.getContext("2d");
+function initCanvas() {//初始化预览画布
+    cPre = document.getElementById("showPre");
+    ctxPre = cPre.getContext("2d");
     img = document.getElementById("originImg");
 }
 
 function updateRect(x, y, w, h) {//更新画布
-    ctx.clearRect(0, 0, 450, 450); //清空画布
-    ctx.save(); //保存了当前ctx的状态
-    ctx.beginPath(); //开始画路径
-    ctx.rect(x, y, w, h); //裁剪区域
-    ctx.closePath(); //清空路径，不然每次都会保留上次的路径
-    ctx.clip(); //裁剪
-    ctx.drawImage(img, 0, 0, 450, 450); //绘图
-    ctx.restore(); //恢复到刚刚保存的状态
+    ctxPre.clearRect(0, 0, 500, 500); //清空画布
+    //var imgData = ctxOri.getImageData(x, y, w, h);
+    //ctxPre.putImageData(imgData, 0, 0, 0, 0, 500, 500);
+    ctxPre.drawImage(img, x, y, w, h, 0, 0, 500, 500);
 }

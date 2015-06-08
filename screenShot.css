@@ -1,50 +1,63 @@
+section, div{
+    padding: 0;
+    margin: 0;
+}
+
 .clearfix:after {
-    content: " ";
     display: block;
-    height: 0;
     visibility: hidden;
     clear: both;
+    height: 0;
+    content: ' ';
 }
 
 #origin, #showPre {
     position: relative;
-    width: 450px;
-    height: 450px;
-    border: 2px solid #2D2D2D;
-    background: #eee;
     float: left;
     margin: 10px;
+    border: 2px solid #2d2d2d;
+    background: #eee;
+}
+
+#origin {
+    width: 500px;
+    height: 500px;
+}
+
+#showPre {
+    width: 250px;
+    height: 250px;
 }
 
 #originImg {
     position: relative;
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
 }
 
 #shotRect {
     position: absolute;
+    display: none;
     width: 50px;
     height: 50px;
-    border: 2px solid #2D2D2D;
-    display: none;
-    opacity: 0.5;
+    opacity: .5;
+    border: 2px solid #2d2d2d;
 }
 
-#shotRect .resizeBR {
+.resizeBR {
     position: absolute;
-    background: #000;
-    opacity: 0;
-    width: 8px;
-    height: 8px;
-    background: #FF0;
-    right: 0;
-    bottom: 0;
+    right: -5px;
+    bottom: -5px;
+    width: 12px;
+    height: 12px;
     cursor: nw-resize;
+    opacity: 0;
+    background: #000;
+    background: #ff0;
 }
 
 #loadBtn {
-    margin-left: 420px;
+    margin-left: 200px;
 }
 
 #saveBtn {
