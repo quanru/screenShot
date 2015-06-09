@@ -91,8 +91,9 @@ function resizeDown(event) {
     event = event || window.event;
     var shotRect = document.getElementById("shotRect"),
         //计算Rect左上角的坐标 
-        x = event.clientX - shotRect.offsetWidth,
-        y = event.clientY - shotRect.offsetHeight;
+        x = shotRect.offsetLeft,
+        y = shotRect.offsetTop ;
+        //console.log("x=" +  x+ " " + "y=" +  y);
     //绑定事件 
     document.addEventListener("mousemove", mouseMove);
     document.addEventListener("mouseup", mouseUp);
@@ -102,17 +103,18 @@ function resizeDown(event) {
         var finalX = event.clientX,
                 finalY = event.clientY;
         //防止超过边界
-        if (event.clientX >= 513) {
-            finalX = 513;
+        if (event.clientX >= 488) {
+            finalX = 488;
         }
-        if (event.clientY >= 513) {
-            finalY = 513;
+        if (event.clientY >= 488) {
+            finalY = 488;
         }
-        xy = finalX - x < finalY - y ? finalX -x : finalY - y;
+        //console.log( (event.clientX) + " " + (event.clientY));
+        xy = (finalX - x + 10) < (finalY - y +10) ? (finalX -x + 10) : (finalY - y + 10);
         //计算移动后的Rect新大小
         shotRect.style.width = xy + 'px';
         shotRect.style.height = xy + 'px';
-        updateRect(x - 15, x - 15, shotRect.offsetWidth, shotRect.offsetHeight);
+        updateRect(x, x, shotRect.offsetWidth, shotRect.offsetHeight);
     }
     //停止事件 
     function mouseUp() {
@@ -130,7 +132,5 @@ function initCanvas() {//初始化预览画布
 
 function updateRect(x, y, w, h) {//更新画布
     ctxPre.clearRect(0, 0, 500, 500); //清空画布
-    //var imgData = ctxOri.getImageData(x, y, w, h);
-    //ctxPre.putImageData(imgData, 0, 0, 0, 0, 500, 500);
     ctxPre.drawImage(img, x, y, w, h, 0, 0, 500, 500);
 }
